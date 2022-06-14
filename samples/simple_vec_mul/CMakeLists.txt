@@ -65,7 +65,7 @@ iree_cc_binary(
     ::simple_float_mul_bytecode_module_static
     ::simple_float_mul_bytecode_module_static_c
     iree::vm::bytecode_module
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__stack_size__=20k"
 )
@@ -78,7 +78,7 @@ iree_cc_binary(
   DEPS
     ::simple_float_mul_c_module_static_c
     ::simple_float_mul_c_module_static_emitc
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__stack_size__=20k"
   COPTS
@@ -94,7 +94,7 @@ iree_cc_binary(
     ::simple_int_mul_bytecode_module_static
     ::simple_int_mul_bytecode_module_static_c
     iree::vm::bytecode_module
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__stack_size__=20k"
 )
@@ -107,7 +107,7 @@ iree_cc_binary(
   DEPS
     ::simple_int_mul_c_module_static_c
     ::simple_int_mul_c_module_static_emitc
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__stack_size__=20k"
   COPTS

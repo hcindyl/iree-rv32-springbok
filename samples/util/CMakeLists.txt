@@ -23,13 +23,13 @@ iree_cc_library(
     ::alloc
     iree::base
     iree::hal
+    iree::hal::drivers::local_sync::sync_driver
     iree::hal::local
     iree::hal::local::loaders::static_library_loader
-    iree::hal::local::sync_driver
     iree::modules::hal
+    iree::samples::device::device_static_loader
     iree::vm
     iree::vm::shims_emitc
-    samples::device::device_static_loader
 )
 
 iree_cc_library(

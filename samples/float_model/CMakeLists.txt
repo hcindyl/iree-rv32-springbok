@@ -32,7 +32,7 @@ springbok_modules(
   NAME
     mnist
   SRC
-    "${CMAKE_SOURCE_DIR}/third_party/iree/iree/samples/models/mnist.mlir"
+    "${CMAKE_SOURCE_DIR}/third_party/iree/samples/models/mnist.mlir"
   C_IDENTIFIER
     "samples_float_model_mnist"
   FLAGS
@@ -88,9 +88,9 @@ iree_cc_binary(
     ::mobilenet_v1_bytecode_module_static_c
     ::mobilenet_input_c
     iree::vm::bytecode_module
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
-    "LINKER:--defsym=__itcm_length__=1M"
+    "LINKER:--defsym=__itcm_length__=1500k"
     "LINKER:--defsym=__stack_size__=200k"
 )
 
@@ -103,10 +103,10 @@ iree_cc_binary(
     ::mobilenet_v1_c_module_static_c
     ::mobilenet_v1_c_module_static_emitc
     ::mobilenet_input_c
-    samples::util::util
+    iree::samples::util::util
     "m"
   LINKOPTS
-    "LINKER:--defsym=__itcm_length__=1M"
+    "LINKER:--defsym=__itcm_length__=1500k"
     "LINKER:--defsym=__stack_size__=200k"
   COPTS
     "-DBUILD_EMITC"
@@ -122,7 +122,7 @@ iree_cc_binary(
     ::mnist_bytecode_module_static_c
     ::mnist_input_c
     iree::vm::bytecode_module
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__stack_size__=100k"
 )
@@ -136,7 +136,7 @@ iree_cc_binary(
     ::mnist_c_module_static_c
     ::mnist_c_module_static_emitc
     ::mnist_input_c
-    samples::util::util
+    iree::samples::util::util
     "m"
   LINKOPTS
     "LINKER:--defsym=__stack_size__=100k"

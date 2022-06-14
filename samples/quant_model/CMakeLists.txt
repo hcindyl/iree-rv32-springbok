@@ -68,7 +68,7 @@ iree_cc_binary(
     ::mobilenet_v1_bytecode_module_static
     ::mobilenet_v1_bytecode_module_static_c
     iree::vm::bytecode_module
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__itcm_length__=1M"
     "LINKER:--defsym=__stack_size__=150k"
@@ -83,7 +83,7 @@ iree_cc_binary(
     ::mobilenet_quant_input_c
     ::mobilenet_v1_c_module_static_c
     ::mobilenet_v1_c_module_static_emitc
-    samples::util::util
+    iree::samples::util::util
   LINKOPTS
     "LINKER:--defsym=__itcm_length__=1M"
     "LINKER:--defsym=__stack_size__=150k"

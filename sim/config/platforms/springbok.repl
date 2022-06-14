@@ -22,7 +22,7 @@ cpu2: CPU.SpringbokRiscV32 @ sysbus
 //RAM_VEC_IMEM      [‘h3200_0000 - ‘h320F_FFFF) 1MB RAM for Vector core Instruction
 // Remember to update hart_is_vc in rom_crt.S if this changes.
 ram_vec_imem: Memory.MappedMemory @ sysbus 0x32000000
-    size: 0x00100000
+    size: 0x00200000
 
 //RAM_VEC_DMEM      [‘h3400_0000 - ‘h34FF_FFFF)   16MB RAM for Vector core Data
 ram_vec_dmem: Memory.MappedMemory @ sysbus 0x34000000

@@ -54,9 +54,9 @@ set(IREE_BUILD_SAMPLES OFF)
 set(IREE_ENABLE_THREADING OFF)
 set(IREE_BUILD_TESTS OFF)
 set(IREE_BUILD_BINDINGS_TFLITE OFF)
+set(IREE_HAL_DRIVER_LOCAL_SYNC ON CACHE BOOL "" FORCE)
+set(IREE_HAL_EXECUTABLE_LOADER_DEFAULTS OFF CACHE BOOL "" FORCE)
 set(IREE_HAL_DRIVER_DEFAULTS OFF CACHE BOOL "" FORCE)
-set(IREE_HAL_DRIVER_VMVX_SYNC ON CACHE BOOL "" FORCE)
-set(IREE_HAL_DRIVER_DYLIB_SYNC ON CACHE BOOL "" FORCE)
 
 #-------------------------------------------------------------------------------
 # IREE-specific definitions
@@ -87,11 +87,22 @@ add_subdirectory(${IREE_SOURCE_DIR} iree)
 
 # Apply IREE's CMake variables and build options so we can use IREE build
 # functions properly in this project.
-include(${IREE_SOURCE_DIR}/build_tools/cmake/iree_copts.cmake)
+set(IREE_CXX_STANDARD ${CMAKE_CXX_STANDARD})
+set(IREE_ROOT_DIR ${CMAKE_SOURCE_DIR})
+set(IREE_SOURCE_DIR ${CMAKE_SOURCE_DIR})
+set(IREE_BINARY_DIR ${CMAKE_BINARY_DIR})
 
 include(springbok_bytecode_module)
 include(springbok_c_module)
 include(springbok_modules)
 include(iree_model_input)
+
+# softmax op requires floorf implementation in libm. Use the nano version.
+find_library(m m
+PATHS
+  "${RISCV_TOOLCHAIN_ROOT}/riscv32-unknown-elf/lib/newlib-nano/"
+REQUIRED)
+link_libraries(m)
+
 # Add the included directory here.
 add_subdirectory(samples)

@@ -50,12 +50,12 @@ static iree_status_t prepare_input_hal_buffer_views(
       .type =
           IREE_HAL_MEMORY_TYPE_HOST_LOCAL | IREE_HAL_MEMORY_TYPE_DEVICE_VISIBLE,
       .access = IREE_HAL_MEMORY_ACCESS_READ,
-      .usage = IREE_HAL_BUFFER_USAGE_DISPATCH | IREE_HAL_BUFFER_USAGE_TRANSFER};
+      .usage = IREE_HAL_BUFFER_USAGE_DEFAULT};
   for (int i = 0; i < model->num_input; ++i) {
     if (iree_status_is_ok(result)) {
       result = iree_hal_buffer_view_allocate_buffer(
-          iree_hal_device_allocator(device), model->input_shape[i],
-          model->num_input_dim[i], model->hal_element_type,
+          iree_hal_device_allocator(device), model->num_input_dim[i],
+          model->input_shape[i], model->hal_element_type,
           IREE_HAL_ENCODING_TYPE_DENSE_ROW_MAJOR, buffer_params, *byte_span[i],
           &(arg_buffer_views[i]));
     }
@@ -93,8 +93,8 @@ iree_status_t run(const MlModel *model) {
   iree_vm_module_t *modules[] = {hal_module, module};
   if (iree_status_is_ok(result)) {
     result = iree_vm_context_create_with_modules(
-        instance, IREE_VM_CONTEXT_FLAG_NONE, &modules[0],
-        IREE_ARRAYSIZE(modules), iree_allocator_system(), &context);
+        instance, IREE_VM_CONTEXT_FLAG_NONE, IREE_ARRAYSIZE(modules),
+        &modules[0], iree_allocator_system(), &context);
   }
   iree_vm_module_release(hal_module);
   iree_vm_module_release(module);
