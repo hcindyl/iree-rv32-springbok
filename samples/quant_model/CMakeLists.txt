@@ -26,6 +26,8 @@ springbok_modules(
     "samples_quant_model_mobilenet_v1"
   FLAGS
     "-iree-input-type=tosa"
+    # Uncomment this code will resolve the misalignment error in mobilenet_v1_bytecode_static
+    #"-iree-llvm-debug-symbols=false"
   RVV_OFF
   PUBLIC
 )
