@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef SW_VEC_IREE_SAMPLES_UTIL_MODEL_API_H_
-#define SW_VEC_IREE_SAMPLES_UTIL_MODEL_API_H_
+#ifndef SAMPLES_UTIL_MODEL_API_H_
+#define SAMPLES_UTIL_MODEL_API_H_
 
 // Define ML model configuration and model-specific utility APIs.
 
@@ -69,4 +69,4 @@ iree_status_t process_output(const MlModel *model,
                              iree_hal_buffer_mapping_t *buffers,
                              MlOutput *output);
 
-#endif  // SW_VEC_IREE_SAMPLES_UTIL_MODEL_API_H_
+#endif  // SAMPLES_UTIL_MODEL_API_H_
