@@ -26,7 +26,6 @@ springbok_modules(
     "samples_quant_model_mobilenet_v1"
   FLAGS
     "-iree-input-type=tosa"
-    "-riscv-v-vector-bits-min=512"
     "-riscv-v-fixed-length-vector-lmul-max=8"
 )
 

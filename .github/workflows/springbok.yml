@@ -2,8 +2,6 @@ name: Springbok README tests
 on:
   pull_request:
   push:
-    branches:
-      - main
 
 jobs:
   test:
